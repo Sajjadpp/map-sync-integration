@@ -5,6 +5,7 @@ app_description = "syncrounise mall to shop"
 app_email = "sajjadmuhammed227@gmail.com"
 app_license = "mit"
 
+import frappe
 # Apps
 # ------------------
 
@@ -253,3 +254,11 @@ app_license = "mit"
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
+
+scheduler_events = {
+    "cron": {
+        "*/2 * * * *": [
+            "map_sync.api.daily_sales_sync"
+        ]
+    }
+}
