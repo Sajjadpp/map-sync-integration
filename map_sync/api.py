@@ -3,7 +3,6 @@ import requests
 from frappe.utils import getdate, add_days, today, formatdate
     
 
-API_URL = "https://api-dev.eaglehills.com/tenants/mgmall/salesimport"
 
 
 
@@ -15,10 +14,11 @@ def send_sales(sales_date=None):
 
     settings = frappe.get_single("MAP Settings")
 
+    API_URL = settings.api_url
     
-    username = settings.get_username("username")
+    username = settings.username
     password = settings.get_password("password")
-    api_key = settings.get_api_key("api_key")
+    api_key = settings.get_password("api_key")
 
     totals = frappe.db.sql(
         """
