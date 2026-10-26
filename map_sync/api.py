@@ -13,9 +13,12 @@ API_URL = "https://api-dev.eaglehills.com/tenants/mgmall/salesimport"
 def send_sales(sales_date=None):
     sales_date = getdate(sales_date or add_days(today(), -1))
 
-    username = "maldoseri@aldoseriventures.com"
-    password = 'LD@dev789789'
-    api_key = 'dev:AvW5^d)(h#45#+c}!PmmF'
+    settings = frappe.get_single("MAP Settings")
+
+    
+    username = settings.get_username("username")
+    password = settings.get_password("password")
+    api_key = settings.get_api_key("api_key")
 
     totals = frappe.db.sql(
         """
