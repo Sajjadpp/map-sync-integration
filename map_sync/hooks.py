@@ -254,10 +254,9 @@ import frappe
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
 
-
 scheduler_events = {
     "cron": {
-        "*/2 * * * *": [
+        "0 1 * * *": [
             "map_sync.api.daily_sales_sync"
         ]
     }
